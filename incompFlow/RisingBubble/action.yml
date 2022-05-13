@@ -17,5 +17,7 @@ runs:
       shell: bash
     - run: git clone https://${{inputs.github_token}}:x-oauth-basic@github.com/Flash-X/Flash-X.git
       shell: bash
+    - run: cd Flash-X && pwd
+      shell: bash
 #    - run: python3 container/incompFlow/RisingBubble.py ${{inputs.amrex_image}}
 #      shell: bash
