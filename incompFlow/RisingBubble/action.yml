@@ -15,7 +15,7 @@ runs:
   steps:
     - run: pip3 install click
       shell: bash
-    - run: git clone https://${{github_token}}:x-oauth-basic@github.com/Flash-X/Flash-X.git
+    - run: git clone https://${{inputs.github_token}}:x-oauth-basic@github.com/Flash-X/Flash-X.git
       shell: bash
 #    - run: python3 container/incompFlow/RisingBubble.py ${{inputs.amrex_image}}
 #      shell: bash
