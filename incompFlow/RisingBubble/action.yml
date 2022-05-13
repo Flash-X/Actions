@@ -2,14 +2,22 @@
 name: RisingBubble
 
 inputs:
-  amrex_image: 
-    description: 'amrex input image'
+  github_token:
+    description: 'GitHub credentials'
     required: true
- 
+
+#  amrex_image: 
+#    description: 'amrex input image'
+#    required: true
+
 runs:
   using: "composite"
   steps:
     - run: pip3 install click
       shell: bash
-    - run: python3 container/incompFlow/RisingBubble.py ${{inputs.amrex_image}}
+    - run: git config --global url."https://${{github_token}}:x-oauth-basic@github.com/".insteadOf "https://github.com/"
       shell: bash
+    - run: git clone https://github.com/Flash-X/Flash-X.git
+      shell: bash
+#    - run: python3 container/incompFlow/RisingBubble.py ${{inputs.amrex_image}}
+#      shell: bash
