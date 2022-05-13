@@ -1,0 +1,13 @@
+# Name of the composite action
+name: Bittree
+
+inputs:
+  image: 
+    description: 'input image'
+    required: true
+ 
+runs:
+  using: "composite"
+  steps:
+    - run: echo "Hello World"
+      shell: bash
