@@ -6,18 +6,14 @@ inputs:
     description: 'GitHub credentials'
     required: true
 
-#  amrex_image: 
-#    description: 'amrex input image'
-#    required: true
+  image: 
+    description: 'amrex input image'
+    required: true
 
 runs:
   using: "composite"
   steps:
-    - run: pip3 install click
+    - run: git clone -b amrex-updates https://${{inputs.github_token}}:x-oauth-basic@github.com/Flash-X/Flash-X.git
       shell: bash
-    - run: git clone https://${{inputs.github_token}}:x-oauth-basic@github.com/Flash-X/Flash-X.git
+    - run: cd Flash-X && python3 container/incompFlow/RisingBubble.py ${{inputs.image}}
       shell: bash
-    - run: cd Flash-X && pwd
-      shell: bash
-#    - run: python3 container/incompFlow/RisingBubble.py ${{inputs.amrex_image}}
-#      shell: bash

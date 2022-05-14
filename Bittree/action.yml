@@ -2,12 +2,22 @@
 name: Bittree
 
 inputs:
-  image: 
-    description: 'input image'
+  github_token:
+    description: 'GitHub credentials'
     required: true
- 
+
+  image: 
+    description: 'Image to update with Bittree library'
+    required: true
+
 runs:
   using: "composite"
   steps:
-    - run: echo "Hello World"
+    - run: git clone -b testing-workflow https://${{inputs.github_token}}:x-oauth-basic@github.com/Flash-X/Bittree.git
       shell: bash
+    - run: cd Bittree && maple image build --base=${{inputs.image}} bittree
+      shell: bash
+    - run: cd Bittree && maple container publish --image=bittree
+      shell: bash
+    - run: maple tag bittree ${{inputs.image}}
+      shell: bash 
