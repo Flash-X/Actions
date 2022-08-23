@@ -13,7 +13,7 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - run: git clone -b amrex-updates https://${{inputs.github_token}}:x-oauth-basic@github.com/Flash-X/Flash-X.git
+    - run: git clone -b Fluid-Dynamics https://${{inputs.github_token}}:x-oauth-basic@github.com/Flash-X/Flash-X.git
       shell: bash
     - run: cd Flash-X && python3 container/incompFlow/RisingBubble.py ${{inputs.image}}
       shell: bash
